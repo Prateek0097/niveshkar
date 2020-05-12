@@ -1,1 +1,6 @@
 *.pyc
+**/logs/
+**/venv/
+.DS_Store
+.idea/
+app.db
