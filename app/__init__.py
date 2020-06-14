@@ -2,6 +2,7 @@ import logging
 import os
 from logging.handlers import SMTPHandler, RotatingFileHandler
 
+from elasticsearch import Elasticsearch
 from flask import Flask
 from flask_login import LoginManager
 from config import Config
@@ -24,6 +25,9 @@ moment = Moment()
 def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
+
+    app.elasticsearch = Elasticsearch([app.config['ELASTICSEARCH_URL']]) \
+        if app.config['ELASTICSEARCH_URL'] else None
 
     db.init_app(app)
     migrate.init_app(app, db)
