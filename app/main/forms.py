@@ -39,5 +39,10 @@ class SearchForm(FlaskForm):
         super(SearchForm, self).__init__(*args, **kwargs)
 
 
+class MessageForm(FlaskForm):
+    message = TextAreaField('Message', validators=[DataRequired(), Length(min=0, max=140)])
+    submit = SubmitField('Submit')
+
+
 class EmptyForm(FlaskForm):
     submit = SubmitField('Submit')
