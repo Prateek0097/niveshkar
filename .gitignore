@@ -5,3 +5,4 @@
 .idea/
 app.db
 .env
+dump.rdb
